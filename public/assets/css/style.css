@@ -8532,6 +8532,7 @@ html.rd-navbar-fixed-linked .page {
 	padding-left: 15px;
 	padding-right: 80px;
 	transition: all .3s ease;
+	padding-top: 35px;
 }
 
 @media (min-width: 1200px) {
