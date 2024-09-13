@@ -3712,12 +3712,23 @@ p + .quote-classic {
 	margin-left: 10px;
 }
 
-.footer-modern-list a, .footer-modern-list a:focus, .footer-modern-list a:active {
+.footer-modern-list a, .footer-modern-list a:focus, .footer-modern-list a:active  {
 	color: rgba(255, 255, 255, 0.8);
 }
 
+
+.footer-modern-list a[routerLink], .footer-modern-list a:focus[routerLink], .footer-modern-list a:active[routerLink] {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
 .footer-modern-list a:hover {
 	color: #ffe745;
+}
+
+.footer-modern-list a[routerLink]:hover {
+  color: #ffe745;
+  cursor: pointer;
 }
 
 .footer-modern-contacts .icon {
