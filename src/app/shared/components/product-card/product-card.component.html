@@ -1,0 +1,30 @@
+<!-- Product-->
+<article class="product wow fadeInLeft" data-wow-delay=".15s">
+  <div class="product-figure"><img src="images/product-1-161x162.png" alt="" width="161" height="162"/>
+  </div>
+  <div class="product-rating">
+    <span class="mdi mdi-star"></span>
+    <span class="mdi mdi-star"></span>
+    <span class="mdi mdi-star"></span>
+    <span class="mdi mdi-star"></span>
+    <span class="mdi mdi-star"></span>
+  </div>
+  <h6 class="product-title">{{ product.name }}</h6>
+  <div class="product-price-wrap">
+    <ng-container *ngIf="product.isOnSale">
+      <div class="product-price product-price-old">S/. {{ product.salePrice }}</div>
+    </ng-container>
+    <div class="product-price">S/. {{ product.price }}</div>
+  </div>
+  <div class="product-button">
+    <div class="button-wrap"><a class="button button-xs button-primary button-winona" href="">Añadir</a></div>
+    <div class="button-wrap"><a class="button button-xs button-secondary button-winona" href="#">Ver producto</a></div>
+    <div class="button-wrap"><a class="button button-xs button-secondary button-winona" href="#">Personalizar</a></div>
+  </div>
+  <ng-container *ngIf="product.isOnSale">
+    <span class="product-badge product-badge-sale">Oferta</span>
+  </ng-container>
+  <ng-container *ngIf="product.isNew">
+    <span class="product-badge product-badge-new">Nuevo</span>
+  </ng-container>
+</article>

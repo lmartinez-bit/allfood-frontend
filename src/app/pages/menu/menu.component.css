@@ -1,0 +1,61 @@
+/* Ajustes para las categorías */
+.aside-categories {
+  padding: 15px;
+}
+
+.aside-categories h5 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #333;
+  text-align: left;
+  margin-bottom: 20px; /* Añade esta línea para crear la separación */
+}
+
+.aside-categories ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.aside-categories li {
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.category-item {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.category-item:hover, .selected {
+  color: #6046b6; /* Color lila del template cuando está seleccionada o en hover */
+}
+
+.vertical-divider {
+  border-left: 2px solid #ccc;
+  height: 100%;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/* Líneas divisorias horizontales */
+.aside-categories li::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: #ccc;
+  margin-top: 10px;
+}
+
+/* Estilos para el input de búsqueda */
+.form-wrap input[type="search"] {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+}

@@ -1,0 +1,29 @@
+<section class="section section-lg bg-default">
+  <div class="container">
+    <h3 class="oh-desktop"><span class="d-inline-block mb-3 wow slideInUp">MENÚ DEL DÍA</span></h3>
+    <div class="card">
+      <div class="card-body">
+        <div class="row row-lg row-30">
+          <ng-container *ngFor="let product of dailyMenu; let i = index">
+            <div class="col-sm-6 col-lg-4 col-xl-3">
+              <!-- Product -->
+              <h6 class="product-title m-3">{{ product.category }}</h6>
+              <article class="product wow fadeInLeft" [attr.data-wow-delay]="(0.15 - (i*0.05)) + 's'">
+                <div class="product-figure"><img src="images/product-2-161x162.png" alt="" width="161" height="162"/>
+                </div>
+                <h6 class="product-title">{{ product.name }}</h6>
+                <div class="product-price-wrap">
+                  <div class="product-price">S/. {{ product.price | number: '1.2-2' }}</div>
+                </div>
+              </article>
+            </div>
+          </ng-container>
+        </div>
+        <div class="button-wrap wow slideInUp">
+          <a class="button button-xs button-primary button-winona" routerLink="">Agregar al carrito</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
