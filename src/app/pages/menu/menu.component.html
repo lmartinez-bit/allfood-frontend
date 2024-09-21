@@ -1,0 +1,110 @@
+<!-- Breadcrumbs -->
+<section class="bg-gray-7">
+  <div class="breadcrumbs-custom box-transform-wrap context-dark">
+    <div class="container">
+      <h3 class="breadcrumbs-custom-title">Menu</h3>
+      <div class="breadcrumbs-custom-decor"></div>
+    </div>
+    <div class="box-transform" style="background-image: url(images/bg-1.jpg);"></div>
+  </div>
+  <div class="container">
+    <ul class="breadcrumbs-custom-path">
+      <li>
+        <a routerLink="home">Home</a>
+      </li>
+      <li class="active">Menú</li>
+    </ul>
+  </div>
+</section>
+
+<app-daily-menu></app-daily-menu>
+
+<!-- Section CTA-->
+<section class="primary-overlay section parallax-container" data-parallax-img="images/bg-4.jpg">
+  <div class="parallax-content section-xxl context-dark text-md-left">
+    <div class="container">
+      <div class="row justify-content-end">
+        <div class="col-sm-9 col-md-7 col-lg-5">
+          <div class="cta-modern">
+            <h3 class="cta-modern-title cta-modern-title-2 oh-desktop"><span class="d-inline-block wow fadeInLeft">-30% en todas ensaladas y bebidas</span></h3>
+            <p class="cta-modern-text cta-modern-text-2 oh-desktop" data-wow-delay=".1s"><span class="cta-modern-decor cta-modern-decor-2 wow slideInLeft"></span><span class="d-inline-block wow slideInUp">Prueba una de las mejores ensaladas!</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Nueva sección con categorías y barra de búsqueda -->
+<section class="section section-lg bg-default text-md-left">
+  <div class="container">
+    <div class="row row-60 justify-content-center">
+      <!-- Sidebar de categorías -->
+      <div class="col-lg-3">
+        <div class="aside-categories">
+          <h5 class="text-transform-none" class="wow fadeInUp">CATEGORÍAS</h5>
+          <ul class="list-unstyled">
+            <li *ngFor="let category of categories; let i = index" (click)="selectCategory(category)"
+                [ngClass]="{'selected': selectedCategory === category}" class="category-item">
+              <span class="wow fadeInRight" [attr.data-wow-delay]="(i*0.2) + 's'">{{ category }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Línea divisoria vertical -->
+      <div class="col-lg-1">
+        <div class="vertical-divider"></div>
+      </div>
+
+      <!-- Barra de búsqueda y resultados -->
+      <div class="col-lg-8">
+        <form class="rd-form rd-mailform mb-4" role="search" class="wow slideInUp">
+          <div class="form-wrap">
+            <input class="form-input" type="search" id="search-input" placeholder="Buscar" aria-label="Buscar">
+          </div>
+        </form>
+
+        <!-- Aquí van los productos filtrados o los resultados de búsqueda -->
+        <div class="row row-lg row-30">
+          <!-- Cards de productos -->
+          <div class="col-lg-5 col-xl-4">
+            <app-product-card></app-product-card>
+          </div>
+
+          <div class="col-lg-5 col-xl-4">
+            <app-product-card></app-product-card>
+          </div>
+
+          <div class="col-lg-5 col-xl-4">
+            <app-product-card></app-product-card>
+          </div>
+
+          <div class="col-lg-5 col-xl-4">
+            <app-product-card></app-product-card>
+          </div>
+
+          <div class="col-lg-5 col-xl-4">
+            <app-product-card></app-product-card>
+          </div>
+
+          <div class="col-lg-5 col-xl-4">
+            <app-product-card></app-product-card>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+

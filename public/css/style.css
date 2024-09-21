@@ -1562,6 +1562,28 @@ button {
 	border-color: #6046b6;
 }
 
+/* Estilos específicos para enlaces con routerLink */
+a[routerLink].button-primary, a[routerLink].button-primary:focus {
+  color: #151515;
+}
+
+a[routerLink].button-primary:hover, a[routerLink].button-primary:active {
+  color: #ffffff;
+}
+
+a[routerLink].button-primary.button-ujarak::before {
+  background: #73cca1;
+}
+
+a[routerLink].button-primary.button-outline::before {
+  border-color: #ffe745;
+}
+
+a[routerLink].button-primary.button-outline:hover::before, a[routerLink].button-primary.button-outline:active::before {
+  border-color: #6046b6;
+}
+
+
 .button-primary-2, .button-primary-2:focus {
 	color: #ffffff;
 	background-color: #6046b6;
@@ -1632,6 +1654,34 @@ button {
 
 .button-secondary-2.button-outline:hover::before, .button-secondary-2.button-outline:active::before {
 	border-color: #6046b6;
+}
+
+/* Estilos para enlaces con routerLink */
+a[routerLink].button-secondary-2, a[routerLink].button-secondary-2:focus {
+  color: #ffffff;
+  background-color: #73cca1;
+  border-color: #73cca1;
+  text-decoration: none; /* Elimina el subrayado si es necesario */
+}
+
+/* Estilos para hover y active con routerLink */
+a[routerLink].button-secondary-2:hover, a[routerLink].button-secondary-2:active {
+  color: #151515;
+  background-color: #ffe745;
+  border-color: #6046b6;
+}
+
+/* Pseudo-elementos para routerLink */
+a[routerLink].button-secondary-2.button-ujarak::before {
+  background: #ffe745;
+}
+
+a[routerLink].button-secondary-2.button-outline::before {
+  border-color: #73cca1;
+}
+
+a[routerLink].button-secondary-2.button-outline:hover::before, a[routerLink].button-secondary-2.button-outline:active::before {
+  border-color: #6046b6;
 }
 
 .button-default-outline, .button-default-outline:focus {

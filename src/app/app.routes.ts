@@ -6,8 +6,10 @@ import { PersonalizacionPlatoComponent } from './pages/personalizacion-plato/per
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent},
-    { path: 'aboutus', component: AboutusComponent},
-    { path: 'contactus', component: ContactusComponent},
-    { path: 'personalizacion-plato', component: PersonalizacionPlatoComponent},
-    { path: '**', pathMatch: 'full', redirectTo: 'home' } // Ruta predeterminada
+  { path: 'menu', component: MenuComponent},
+  { path: 'aboutus', component: AboutusComponent},
+  { path: 'contactus', component: ContactusComponent},
+  { path: 'personalizacion-plato', component: PersonalizacionPlatoComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home' } // Ruta comodín para rutas no encontradas
 ];
