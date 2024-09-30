@@ -59,3 +59,21 @@
   border: 1px solid #ccc;
   width: 100%;
 }
+
+.load-more-button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.load-more-button button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #6046b6; /* Tu color lila */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.load-more-button button:hover {
+  background-color: #503aa0;
+}
