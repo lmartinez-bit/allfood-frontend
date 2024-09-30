@@ -14,7 +14,7 @@ export class PersonalizacionPlatoComponent {
   private stepper!: Stepper;
 
   constructor() {
-    
+
   }
 
   next() {
