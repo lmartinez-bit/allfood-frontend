@@ -29,7 +29,7 @@
   </ng-container>
 </article>
 
-<div class="modal fade" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" style="display: none;" aria-hidden="true">
+<div class="modal fade" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" style="display: none; z-index: 99999 !important;" aria-hidden="true">
   <div class="modal-dialog modal-xl">
       <div class="modal-content">
           <div class="modal-header">
@@ -44,7 +44,7 @@
                     <div class="step" data-target="#test-l-1">
                       <button class="step-trigger">
                         <span class="bs-stepper-circle">1</span>
-                        <span class="bs-stepper-label">Ingredientes</span>
+                        <span class="bs-stepper-label">Ingredientes Adicionales</span>
                       </button>
                     </div>
                     <div class="line"></div>
@@ -63,58 +63,50 @@
                     </div>
                   </div>
                   <div class="bs-stepper-content">
-                    <form (ngSubmit)="onSubmit()">
+                    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
                       <div id="test-l-1" class="content">
                         <div class="form-group">
 
-                          <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                              <label class="form-check-label" for="inlineCheckbox1">Ingrediente 1 (S/.10)</label>
+                          <ng-container *ngFor="let ingrediente of product.adicionales">
+                            <div class="form-check form-check-inline" *ngIf="ingrediente.adiCategoria == 'ingrediente'">
+                              <input class="form-check-input" type="checkbox" [id]="ingrediente.adiId" ngModel name="ingrediente" [value]="ingrediente.adiId" (change)="onIngredienteChanged($event)">
+                              <label class="form-check-label" [for]="ingrediente.adiId">{{ ingrediente.adiNombre }} (S/. {{ ingrediente.adiPrecio }})</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                              <label class="form-check-label" for="inlineCheckbox2">Ingrediente 2 (S/.10)</label>
-                            </div>
-                            
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                              <label class="form-check-label" for="inlineCheckbox3">Ingrediente 3 (S/.10)</label>
-                            </div>
+                          </ng-container>
 
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
-                              <label class="form-check-label" for="inlineCheckbox4">Ingrediente 4 (S/.10)</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option5">
-                              <label class="form-check-label" for="inlineCheckbox5">Ingrediente 5 (S/.10)</label>
-                            </div>
                         </div>
-                        <button (click)="next()" class="btn btn-primary">Next</button>
+                        <button type="button" (click)="next()" class="btn btn-primary mt-5">Siguiente</button>
                       </div>
                       <div id="test-l-2" class="content">
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                        
+                        <div class="container mt-5">
+                          <div class="row">
+                            <ng-container *ngFor="let porcion of product.adicionales">
+                              <div class="col-md-2" *ngIf="porcion.adiCategoria == 'porcion'">
+                                <app-porcion-card [porcion]="porcion" (porcionChanged)="onPorcionChanged($event)"></app-porcion-card>
+                              </div>
+                            </ng-container>
+                          </div>
                         </div>
-                        <button (click)="next()" class="btn btn-primary">Next</button>
+                        <button type="button" (click)="next()" class="btn btn-primary mt-5">Siguiente</button>
                       </div>
                       <div id="test-l-3" class="content">
 
                           <label for="exampleFormControlTextarea1">Indiquenos por favor las preferencias que desea para el plato</label>
-                          <textarea class="form-control mt-3" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          <textarea class="form-control mt-3" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="preferencias" name="preferencias"></textarea>
 
                           <div class="text-right mt-5">
                               <span class="d-block">Costo Total: S/.10</span>
-                              <div class="button-wrap"><a class="button button-xs button-primary button-winona" href="css/fonts.css">Agregar al carrito</a></div>
-                              <button type="submit" class="btn btn-primary mt-3">Agregar al Carrito</button>
+                              <div class="button-wrap"><button type="submit" class="button button-xs button-primary button-winona">Agregar al carrito</button></div>
                           </div>
                         
                       </div>
                     </form>
                   </div>
               </div>
+          </div>
+          <div class="modal-footer d-none">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeButton">Cerrar</button>
           </div>
       </div>
   </div>

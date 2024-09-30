@@ -1,3 +1,4 @@
+import { Adicional } from "./producto-pedido";
 
 
 export interface Product {
@@ -8,6 +9,8 @@ export interface Product {
   isNew: boolean;
   isOnSale: boolean;
   salePrice?: number;
+  adicionales?: Adicional[];
+  preferencias?: string;
 }
 
 

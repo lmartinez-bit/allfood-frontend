@@ -1,0 +1,8 @@
+<div class="card card-checkbox" [ngClass]="{ 'selected': isSelected }" (click)="toggleSelection()">
+    <img [src]="porcion.adiImgUrl" class="card-img-top" alt="Porcion Image">
+    <div class="card-body">
+        <h5 class="product-title">{{ porcion.adiNombre }}</h5>
+        <p class="product-price">S/. {{ porcion.adiPrecio }}</p>
+    </div>
+    <div class="checkmark" *ngIf="isSelected">&#10004;</div>
+</div>
