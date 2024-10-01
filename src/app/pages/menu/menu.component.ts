@@ -16,7 +16,7 @@ import { Producto } from '../../interfaces/product.interface';
 })
 export class MenuComponent implements OnInit {
 
-  categories: string[] = ['Categoría 1', 'Categoría 2', 'Categoría 3', 'Categoría 4', 'Categoría 5'];
+  categories: string[] = ['Ensaladas', 'Sopas', 'Plato Principal', 'Postres', 'Bebidas', 'Extras'];
   selectedCategory: string | null = null;
   stepper!: Stepper;
 
