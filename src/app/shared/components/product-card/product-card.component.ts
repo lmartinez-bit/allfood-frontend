@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Product } from '../../../interfaces/product.interface';
 import Stepper from 'bs-stepper';
 import { PorcionCardComponent } from '../porcion-card/porcion-card.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Adicional } from '../../../interfaces/producto-pedido';
 import { CarritoService } from '../../../services/carrito.service';
 import { ToastrService } from 'ngx-toastr';
+import { Producto } from '../../../interfaces/product.interface';
 
 @Component({
   selector: 'app-product-card',
@@ -19,6 +19,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ProductCardComponent {
 
   @Input() stepper!: Stepper;
+  @Input() producto!: Producto;
 
   ingredientesSeleccionados: Adicional[] = [];
   porcionesSeleccionadas   : Adicional[] = [];
@@ -27,31 +28,6 @@ export class ProductCardComponent {
 
   @ViewChildren(PorcionCardComponent) porcionCards!: QueryList<PorcionCardComponent>;
 
-  porciones: Adicional[] = [
-    { adiId: 1, adiNombre: 'product 1', adiImgUrl: 'https://via.placeholder.com/300', adiCategoria: 'porcion', adiCantAdicional: 1, adiPrecio: 10.00 },
-    { adiId: 2, adiNombre: 'product 2', adiImgUrl: 'https://via.placeholder.com/300', adiCategoria: 'porcion', adiCantAdicional: 1, adiPrecio: 15.00 },
-    { adiId: 3, adiNombre: 'product 3', adiImgUrl: 'https://via.placeholder.com/300', adiCategoria: 'porcion', adiCantAdicional: 1, adiPrecio: 20.00 },
-    { adiId: 4, adiNombre: 'product 4', adiImgUrl: 'https://via.placeholder.com/300', adiCategoria: 'porcion', adiCantAdicional: 1, adiPrecio: 25.00 },
-    { adiId: 5, adiNombre: 'product 5', adiImgUrl: 'https://via.placeholder.com/300', adiCategoria: 'porcion', adiCantAdicional: 1, adiPrecio: 30.00 },
-    { adiId: 6, adiNombre: 'product 6', adiImgUrl: 'https://via.placeholder.com/300', adiCategoria: 'porcion', adiCantAdicional: 1, adiPrecio: 10.00 },
-    { adiId: 7, adiNombre: 'ingrediente 1', adiImgUrl: undefined, adiCategoria: 'ingrediente', adiCantAdicional: 1, adiPrecio: 10.00 },
-    { adiId: 8, adiNombre: 'ingrediente 2', adiImgUrl: undefined, adiCategoria: 'ingrediente', adiCantAdicional: 1, adiPrecio: 15.00 },
-    { adiId: 9, adiNombre: 'ingrediente 3', adiImgUrl: undefined, adiCategoria: 'ingrediente', adiCantAdicional: 1, adiPrecio: 20.00 },
-    { adiId: 10, adiNombre: 'ingrediente 4', adiImgUrl: undefined, adiCategoria: 'ingrediente', adiCantAdicional: 1, adiPrecio: 30.00 },
-    { adiId: 11, adiNombre: 'ingrediente 5', adiImgUrl: undefined, adiCategoria: 'ingrediente', adiCantAdicional: 1, adiPrecio: 40.00 },
-    { adiId: 12, adiNombre: 'ingrediente 6', adiImgUrl: undefined, adiCategoria: 'ingrediente', adiCantAdicional: 1, adiPrecio: 50.00 },
-    { adiId: 13, adiNombre: 'ingrediente 7', adiImgUrl: undefined, adiCategoria: 'ingrediente', adiCantAdicional: 1, adiPrecio: 60.00 },
-  ];
-
-  public product: Product = {
-    name: 'Lomo Saltado',
-    price: 15.00,
-    category: '',
-    imageUrl: '',
-    isNew: false,
-    isOnSale: false,
-    adicionales: this.porciones
-  }
 
   constructor(
       private carritoService: CarritoService,
@@ -69,7 +45,7 @@ export class ProductCardComponent {
 
   onIngredienteChanged(event: any) {
     const ingredienteId = event.target.value;
-    const ingrediente = this.product.adicionales?.find(i => i.adiId == ingredienteId); 
+    const ingrediente = this.producto.adicionales?.find(i => i.adiId == ingredienteId);
     if (ingrediente != undefined) {
       if (event.target.checked) {
           this.ingredientesSeleccionados.push(ingrediente);
@@ -84,7 +60,7 @@ export class ProductCardComponent {
   }
 
   onSubmit(form: NgForm) {
-    const nuevoPedido = {...this.product};
+    const nuevoPedido = {...this.producto};
     nuevoPedido.adicionales = [...this.porcionesSeleccionadas, ...this.ingredientesSeleccionados];
     nuevoPedido.preferencias = this.preferencias;
     this.carritoService.addToCart(nuevoPedido);
@@ -112,12 +88,12 @@ export class ProductCardComponent {
   closeModal() {
     const closeButton = document.getElementById('closeButton');
     if (closeButton) {
-      closeButton.click(); 
+      closeButton.click();
     }
   }
 
   showSuccess() {
-    this.toastr.success(`${this.product.name} ha sido agregado al carrito.`, '¡Listo!');
+    this.toastr.success(`${this.producto.proNombre} ha sido agregado al carrito.`, '¡Listo!');
   }
 
 }

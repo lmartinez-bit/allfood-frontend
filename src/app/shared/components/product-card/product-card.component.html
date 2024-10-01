@@ -1,6 +1,6 @@
 <!-- Product-->
 <article class="product wow fadeInLeft" data-wow-delay=".15s">
-  <div class="product-figure"><img src="images/product-1-161x162.png" alt="" width="161" height="162"/>
+  <div class="product-figure"><img [src]="producto.proImgUrl" alt="" width="161" height="162"/>
   </div>
   <div class="product-rating">
     <span class="mdi mdi-star"></span>
@@ -9,24 +9,24 @@
     <span class="mdi mdi-star"></span>
     <span class="mdi mdi-star"></span>
   </div>
-  <h6 class="product-title">{{ product.name }}</h6>
+  <h6 class="product-title">{{ producto.proNombre }}</h6>
   <div class="product-price-wrap">
-    <ng-container *ngIf="product.isOnSale">
+    <!-- <ng-container *ngIf="product.isOnSale">
       <div class="product-price product-price-old">S/. {{ product.salePrice }}</div>
-    </ng-container>
-    <div class="product-price">S/. {{ product.price }}</div>
+    </ng-container> -->
+    <div class="product-price">S/. {{ producto.proPrecio }}</div>
   </div>
   <div class="product-button">
     <div class="button-wrap"><a class="button button-xs button-primary button-winona" href="">Añadir</a></div>
     <div class="button-wrap"><a class="button button-xs button-secondary button-winona" href="#">Ver producto</a></div>
     <div class="button-wrap"><button type="button" class="button button-xs button-secondary button-winona" data-toggle="modal" data-target="#exampleModalXl">Personalizar</button></div>
   </div>
-  <ng-container *ngIf="product.isOnSale">
+  <!-- <ng-container *ngIf="product.isOnSale">
     <span class="product-badge product-badge-sale">Oferta</span>
   </ng-container>
   <ng-container *ngIf="product.isNew">
     <span class="product-badge product-badge-new">Nuevo</span>
-  </ng-container>
+  </ng-container> -->
 </article>
 
 <div class="modal fade" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" style="display: none; z-index: 99999 !important;" aria-hidden="true">
@@ -67,7 +67,7 @@
                       <div id="test-l-1" class="content">
                         <div class="form-group">
 
-                          <ng-container *ngFor="let ingrediente of product.adicionales">
+                          <ng-container *ngFor="let ingrediente of producto.adicionales">
                             <div class="form-check form-check-inline" *ngIf="ingrediente.adiCategoria == 'ingrediente'">
                               <input class="form-check-input" type="checkbox" [id]="ingrediente.adiId" ngModel name="ingrediente" [value]="ingrediente.adiId" (change)="onIngredienteChanged($event)">
                               <label class="form-check-label" [for]="ingrediente.adiId">{{ ingrediente.adiNombre }} (S/. {{ ingrediente.adiPrecio }})</label>
@@ -78,10 +78,10 @@
                         <button type="button" (click)="next()" class="btn btn-primary mt-5">Siguiente</button>
                       </div>
                       <div id="test-l-2" class="content">
-                        
+
                         <div class="container mt-5">
                           <div class="row">
-                            <ng-container *ngFor="let porcion of product.adicionales">
+                            <ng-container *ngFor="let porcion of producto.adicionales">
                               <div class="col-md-2" *ngIf="porcion.adiCategoria == 'porcion'">
                                 <app-porcion-card [porcion]="porcion" (porcionChanged)="onPorcionChanged($event)"></app-porcion-card>
                               </div>
@@ -99,7 +99,7 @@
                               <span class="d-block">Costo Total: S/.10</span>
                               <div class="button-wrap"><button type="submit" class="button button-xs button-primary button-winona">Agregar al carrito</button></div>
                           </div>
-                        
+
                       </div>
                     </form>
                   </div>

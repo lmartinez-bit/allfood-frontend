@@ -1,16 +1,25 @@
-import { Adicional } from "./producto-pedido";
 
-
-export interface Product {
-  name: string;
-  price: number;
-  category: string;
-  imageUrl: string;
-  isNew: boolean;
-  isOnSale: boolean;
-  salePrice?: number;
-  adicionales?: Adicional[];
+export interface Producto {
+  proId:                  number;
+  proCant:                number;
+  proPrecio:              number;
+  proNombre:              string;
+  categoriaProductoCatId: number;
+  proEsNuevo:             string;
+  proEnDescuento:         string;
+  proImgUrl:              string;
+  proEstado:              string;
+  proDesc:                string;
+  adicionales?:           Adicional[];
   preferencias?: string;
 }
 
+export interface Adicional {
+  adiId:            number;
+  adiNombre:        string;
+  adiImgUrl?:       string;
+  adiCategoria:     string;
+  adiCantAdicional: number;
+  adiPrecio:        number;
+}
 

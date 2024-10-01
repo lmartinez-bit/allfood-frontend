@@ -68,29 +68,14 @@
         <!-- Aquí van los productos filtrados o los resultados de búsqueda -->
         <div class="row row-lg row-30">
           <!-- Cards de productos -->
-          <div class="col-lg-5 col-xl-4">
-            <app-product-card [stepper]="stepper"></app-product-card>
-          </div>
 
-          <div class="col-lg-5 col-xl-4">
-            <app-product-card></app-product-card>
-          </div>
+          <ng-container *ngFor="let producto of productos">
+            <div class="col-lg-5 col-xl-4">
+              <app-product-card [stepper]="stepper" [producto]="producto"></app-product-card>
+            </div>
+          </ng-container>
 
-          <div class="col-lg-5 col-xl-4">
-            <app-product-card></app-product-card>
-          </div>
 
-          <div class="col-lg-5 col-xl-4">
-            <app-product-card></app-product-card>
-          </div>
-
-          <div class="col-lg-5 col-xl-4">
-            <app-product-card></app-product-card>
-          </div>
-
-          <div class="col-lg-5 col-xl-4">
-            <app-product-card></app-product-card>
-          </div>
 
         </div>
 
